@@ -1,5 +1,6 @@
 const Web3 = require('web3')
 var Tx = require('ethereumjs-tx').Transaction
+var BigNumber = require('big-number')
 const { promises } = require('dns')
 
 //Infura ropesten account
@@ -84,14 +85,15 @@ const getDecimals = async () => {
 let fs = require("fs")
 let accounts = fs.readFileSync('AccountList.txt', 'utf8').split('\n');
 for (looper = 0; looper < accounts.length; looper++) {
-	console.log(`Account ${looper} is ${accounts[looper]}`)}
+	console.log(`Account ${looper} is ${accounts[looper]}`)
+}
 
 //method to calculate 5% of remaining balance and distribute it to 10 accounts
 const getremainingBalance = async () => {
-	var BigNumber = require('big-number');
+
 	var remainingBalance = await getBalanceOf(owner)
 	var bal = new BigNumber(remainingBalance)
-	var distribute = bal.multiply(5).div(100).div(10)
+	var distribute = bal.multiply(5).div(100).div(accounts.length + 1)
 	console.log("Distributed value : " + (distribute.toString()))
 	for (let index = 0; index < accounts.length; index++) {
 		await transferFunds(owner, accounts[index], distribute)
