@@ -25,4 +25,4 @@ CMD [ "node", "handlers.js" ]
 #to see running containers
 #docker ps 
 
-#docker run -p 49160:8080 --name BlockchainAssignment -d ankitsingh2577/x20104707
+#docker run -p 49160:8080 --name BlockchainAssignment -d soniaghongadi/x20104707
