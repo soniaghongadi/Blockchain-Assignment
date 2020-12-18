@@ -82,9 +82,9 @@ const getDecimals = async () => {
 
 //Read and display account.txt file where 10 accounts are added
 let fs = require("fs")
-let array = fs.readFileSync('accounts.txt', 'utf8').split('\n');
-for (looper = 0; looper < array.length; looper++) {
-	console.log(`array ${looper} is ${array[looper]}`)}
+let accounts = fs.readFileSync('AccountList.txt', 'utf8').split('\n');
+for (looper = 0; looper < accounts.length; looper++) {
+	console.log(`Account ${looper} is ${accounts[looper]}`)}
 
 //method to calculate 5% of remaining balance and distribute it to 10 accounts
 const getremainingBalance = async () => {
@@ -93,12 +93,11 @@ const getremainingBalance = async () => {
 	var bal = new BigNumber(remainingBalance)
 	var distribute = bal.multiply(5).div(100).div(10)
 	console.log("Distributed value : " + (distribute.toString()))
-	let fs = require("fs")
-	let accounts = fs.readFileSync('accounts.txt', 'utf8').split('\n');
 	for (let index = 0; index < accounts.length; index++) {
 		await transferFunds(owner, accounts[index], distribute)
-		console.log(((accounts[index])));
+		console.log("Tokens are received at : " + accounts[index]);
 	}
+	return true
 }
 
 //display name,symbol, total supply, decimal places, balance of owner and distribution 
