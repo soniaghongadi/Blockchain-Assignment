@@ -17,3 +17,5 @@ It is an assignment to perform transactions of ethereum tokens to 10 different m
 
 7. Returns the transaction hash value which indiates transaction is completed successfully. 
 
+8. Added dockerfile. 
+
